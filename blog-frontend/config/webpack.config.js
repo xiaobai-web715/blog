@@ -469,18 +469,26 @@ module.exports = function (webpackEnv) {
             // By default we support CSS Modules with the extension .module.css
             {
               test: cssRegex,
-              exclude: cssModuleRegex,
+              // exclude: cssModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
                 sourceMap: isEnvProduction
                   ? shouldUseSourceMap
                   : isEnvDevelopment,
+                modules:true,//开启样式模块化 =>有这一行就ok了,当我不知道其余的改动如何成功以及有啥作用
+                // localIdentName:'[local]_[hash:base64:6]'//class名称生产规则
               }),
+              exclude:[paths.appNodeModules,paths.appCommonCss],//排除这两个文件夹下面的css文件
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.
               // See https://github.com/webpack/webpack/issues/6571
               sideEffects: true,
+            },
+            {
+                test:/\.css$/,
+                use:['style-loader','css-loader'],
+                include:[paths.appNodeModules,paths.appCommonCss]
             },
             // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
             // using the extension .module.css
@@ -491,9 +499,8 @@ module.exports = function (webpackEnv) {
                 sourceMap: isEnvProduction
                   ? shouldUseSourceMap
                   : isEnvDevelopment,
-                modules: {
+                  modules: true,
                   getLocalIdent: getCSSModuleLocalIdent,
-                },
               }),
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
@@ -504,7 +511,7 @@ module.exports = function (webpackEnv) {
               exclude: sassModuleRegex,
               use: getStyleLoaders(
                 {
-                  importLoaders: 3,
+                  importLoaders: 2,
                   sourceMap: isEnvProduction
                     ? shouldUseSourceMap
                     : isEnvDevelopment,
@@ -523,13 +530,12 @@ module.exports = function (webpackEnv) {
               test: sassModuleRegex,
               use: getStyleLoaders(
                 {
-                  importLoaders: 3,
+                  importLoaders: 2,
                   sourceMap: isEnvProduction
                     ? shouldUseSourceMap
                     : isEnvDevelopment,
-                  modules: {
-                    getLocalIdent: getCSSModuleLocalIdent,
-                  },
+                  modules: true,
+                  getLocalIdent: getCSSModuleLocalIdent,
                 },
                 'sass-loader'
               ),
