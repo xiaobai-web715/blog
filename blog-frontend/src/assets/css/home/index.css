@@ -1,13 +1,25 @@
-.page{
-    background-color:#FFFFFF;
-    width:100%;
-    min-height:100vh;
-}
-
-:global(.main){
-    color:yellow;
-}
-
-.page .main{
-    color:red;
-}
+.page{ background-color:#FFFFFF;width:100%;min-height:100vh;}
+.page.active{background-color:#15172a; color:#FFFFFF !important;}
+.page .head{width:100%;height:67px;padding:8px 16px;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;}
+.page .head .user{width:181px;height:50px;display:flex;align-items:center;justify-content:space-between; flex-shrink:0}
+.page .head .user .image{width:50px;height:50px;}
+.page .head .user .image img{width:100%;height:100%;max-width:100%;max-height:100%;border:1px solid #C0C0C0; box-sizing:border-box;border-radius:50%;cursor:pointer;}
+.page .head .user h4{width:115px; color:#00BFFF !important;font-weight:bold;text-align:center;cursor:pointer;margin-bottom:0;}
+.page .head .nav{width:600px;height:50px;display:flex;align-items:center;flex-shrink:0;margin:0;}
+.page .head .nav li{width:74px;height:100%;box-sizing:border-box;padding:4px 12px;line-height:42px;cursor:pointer; text-align:center;}
+.page .head .nav li.active{border-bottom:4px solid #5468ff;padding-bottom:0;}
+.page .head .nav li:nth-child(1) span, 
+.page .head .nav li:nth-child(2) span,
+.page .head .nav li:nth-child(3) span{width:12px;height:6px;display:inline-block;border-right:6px solid #FFFFFF;border-left:6px solid #FFFFFF;border-top:6px solid black;box-sizing:border-box;margin-left:2px; border-color:black transparent transparent transparent}
+.page .head .nav li:nth-child(1) span.active, 
+.page .head .nav li:nth-child(2) span.active,
+.page .head .nav li:nth-child(3) span.active{border-color:#FFFFFF transparent transparent transparent}
+.page .head .nav li em.active{color:#FFFFFF}
+.page .head .nav li:nth-child(4){width:72px;}
+.page .head .nav li:nth-child(5){width:106px;}
+.page .head .nav li:nth-child(6){width:50px;box-sizing:content-box;height:24px;line-height:24px;}
+.page .head .nav li:nth-child(7){width:139px; height:36px; padding:0;margin-left:10px;border:3px solid transparent;background-color:#EBEDF0;border-radius:20px;display:flex;justify-content:space-between;}
+.page .head .nav li:nth-child(7):hover{border-color:#5468ff;}
+.page .head .nav li:nth-child(7) .image{width:25%;height:100%;}
+.page .head .nav li:nth-child(7) .title{width:75%;height:100%;text-align:start;line-height:30px;box-sizing:border-box;padding-left:5px;color:#969FAF;}
+.page .content{width:100%;max-height:100vh;padding-top:67px;}
