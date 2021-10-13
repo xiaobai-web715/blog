@@ -1,4 +1,4 @@
-import React , {Suspense , lazy , useEffect , useState} from 'react'
+import React , {Suspense , lazy , useEffect , useState , useRef} from 'react'
 import { Link  , Route , Switch as SwitchAntd } from 'react-router-dom'
 import config from '../../assets/js/config/config'
 import Css from '../../assets/css/home/index.css'
@@ -13,8 +13,13 @@ const HomeTool = lazy(() => import('../content/tool'))
 
 const HomeIndex = (props) => {
     const [selectStyle , setSelectStyle] = useState({page : true , curriculum : false , tool :false , learn : false})
-    //这里有个需求就是我点击导航的时候给指定的部分添加样式,但是通过触发点击事件所获得的props始终是上一个路由的props,我的认为是在点击事件当中所使用的props指针已经确定指向了前一个路由的props,所以导致拿到的不是我们想要的,这里用useEffect来监听props的变化,也就可以拿到新的props
     const [backGround , setBackGround] = useState(false)
+    //添加一个状态来修改搜索组件的属性
+    const [bMask , setBMask] = useState(false)
+    const [bSearch , setBSearch] = useState(Css["up"])
+    const [searchText , setSearchText] = useState('')
+    let mask = useRef(null);
+    //这里有个需求就是我点击导航的时候给指定的部分添加样式,但是通过触发点击事件所获得的props始终是上一个路由的props,我的认为是在点击事件当中所使用的props指针已经确定指向了前一个路由的props,所以导致拿到的不是我们想要的,这里用useEffect来监听props的变化,也就可以拿到新的props
     useEffect(() => {
         let isUnmounted = false;
         const pathname = props.location.pathname;
@@ -34,9 +39,21 @@ const HomeIndex = (props) => {
             isUnmounted = true;
         }
     } , [props])
+    useEffect(() => {
+        //绑定点击事件
+        mask.current.addEventListener('click' , () => {
+            setBMask(false)
+            setBSearch(Css["up"])
+        } , false)
+        //绑定滚动条事件,并禁止掉
+        mask.current.addEventListener('mousewheel' , (e) => {
+            e.preventDefault()
+        } , false)
+    } , [])// eslint-disable-line react-hooks/exhaustive-deps
     //搜索事件
     const search = () => {
-
+        setBMask(true)
+        setBSearch(Css['down'])
     }
     //antd的开关事件
     const onChange = (checked) => {
@@ -47,7 +64,7 @@ const HomeIndex = (props) => {
             <div className={Css['head']}>
                 <div className={Css['user']}>
                     <div className={Css['image']}>
-                        <img src={require('../../assets/image/user/head.jpg').default} alt='你说啥名字好呢'></img>
+                        <img src={require('../../assets/image/common/head.jpg').default} alt='你说啥名字好呢'></img>
                     </div>
                     <h4>你说啥名字好呢</h4>
                 </div>
@@ -77,8 +94,8 @@ const HomeIndex = (props) => {
                     <li><a href='https://github.com/xiaobai-web715/blog/tree/master' ><em className={backGround? Css['active'] : ''}>本站源码</em></a></li>
                     <li><Switch size='default' onChange={onChange}/></li>
                     <li onClick={search}>
-                        <div className={Css['image']}></div>
-                        <div className={Css['title']}>搜索</div>
+                        <div className={Css['image']}><div></div></div>
+                        搜索
                     </li>
                 </ul>
             </div>
@@ -91,6 +108,19 @@ const HomeIndex = (props) => {
                         <Route path={config.path+'home/tool'} component={HomeTool}></Route>
                     </SwitchAntd>
                 </Suspense>
+            </div>
+            {/* 点击搜索框时添加的背景颜色 */}
+            <div className={bMask ? Css['mask'] : Css['mask'] + ' ' + Css['hide']}ref={mask}></div>
+            {/* 点击搜索框弹出的搜索部分 */}
+            <div className={Css['search'] + ' ' + bSearch}>
+                <div className={Css['head']}>
+                    <div className={Css['search-wrap']}>
+                        <div></div>
+                        <input placeholder='Search docs' value={searchText} onChange={e => {setSearchText(e.target.value)}}></input>
+                    </div>
+                </div>
+                <div className={Css['search-content']}></div>
+                <div className={Css['bottom']}></div>
             </div>
         </div>
     )
