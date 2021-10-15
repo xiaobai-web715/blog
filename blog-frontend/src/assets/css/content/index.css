@@ -1,0 +1,11 @@
+.page{width:100%;min-height:100vh;padding-top:67px;}
+.page .first-screen{width:100%;height:100vh;box-sizing:border-box;padding-top:67px;margin-top:-67px;/* 栅格化布局 */display:grid;/* 当栅格元素的区域到达临界700px的时候，这里就会自动实现栅格列转成栅格行 */grid-template-columns:repeat(auto-fit , minmax(700px , 1fr));}
+.page .first-screen .text-content{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 64px 0 64px;}
+.page .first-screen .text-content p:nth-child(1){font-size:46px;font-weight:bold;}
+.page .first-screen .text-content p span{color:#338BFF !important;}
+.page .first-screen .text-content .introduce{font-size:18px;color:#637792}
+.page .first-screen .text-content button{width:138px;height:26px;padding:12px 20px;box-sizing:content-box;background:linear-gradient(to right , hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%));border:none;cursor:pointer;}
+.page .first-screen .image-content{display:flex;align-items:center;justify-content:center;}
+.page .first-screen .image-content .image{width:700px;min-height:400px;
+background-image:url('../../image/common/19.jpg');background-size:100%;background-repeat:no-repeat;background-position:center;}
+

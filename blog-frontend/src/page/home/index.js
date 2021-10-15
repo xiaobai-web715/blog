@@ -61,7 +61,7 @@ const HomeIndex = (props) => {
     }
     return (
         <div className={backGround ? Css['page'] + ' ' + Css['active'] : Css['page']}>
-            <div className={Css['head']}>
+            <div className={backGround ? Css['head'] + ' ' + Css['active'] : Css['head']}>
                 <div className={Css['user']}>
                     <div className={Css['image']}>
                         <img src={require('../../assets/image/common/head.jpg').default} alt='你说啥名字好呢'></img>
@@ -99,16 +99,14 @@ const HomeIndex = (props) => {
                     </li>
                 </ul>
             </div>
-            <div className={Css['content']}>
-                <Suspense fallback={<React.Fragment></React.Fragment>}>
-                    <SwitchAntd>
-                        <Route path={config.path+'home/page'} component={HomePage}></Route>
-                        <Route path={config.path+'home/learn'} component={HomeLearn}></Route>
-                        <Route path={config.path+'home/curriculum'} component={HomeCurriculum}></Route>
-                        <Route path={config.path+'home/tool'} component={HomeTool}></Route>
-                    </SwitchAntd>
-                </Suspense>
-            </div>
+            <Suspense fallback={<React.Fragment></React.Fragment>}>
+                <SwitchAntd>
+                    <Route path={config.path+'home/page'} component={HomePage}></Route>
+                    <Route path={config.path+'home/learn'} component={HomeLearn}></Route>
+                    <Route path={config.path+'home/curriculum'} component={HomeCurriculum}></Route>
+                    <Route path={config.path+'home/tool'} component={HomeTool}></Route>
+                </SwitchAntd>
+            </Suspense>
             {/* 点击搜索框时添加的背景颜色 */}
             <div className={bMask ? Css['mask'] : Css['mask'] + ' ' + Css['hide']}ref={mask}></div>
             {/* 点击搜索框弹出的搜索部分 */}
