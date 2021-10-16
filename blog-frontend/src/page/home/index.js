@@ -1,6 +1,8 @@
 import React , {Suspense , lazy , useEffect , useState , useRef} from 'react'
 import { Link  , Route , Switch as SwitchAntd } from 'react-router-dom'
+import {useDispatch} from 'react-redux'
 import config from '../../assets/js/config/config'
+import { ground_color } from '../../action/backGround'
 import Css from '../../assets/css/home/index.css'
 import { Switch} from 'antd'
 import 'antd/dist/antd.css'
@@ -12,6 +14,7 @@ const HomeCurriculum = lazy(() => import('../content/curriculum'))
 const HomeTool = lazy(() => import('../content/tool'))
 
 const HomeIndex = (props) => {
+    const dispatch = useDispatch(null);
     const [selectStyle , setSelectStyle] = useState({page : true , curriculum : false , tool :false , learn : false})
     const [backGround , setBackGround] = useState(false)
     //添加一个状态来修改搜索组件的属性
@@ -23,15 +26,16 @@ const HomeIndex = (props) => {
     useEffect(() => {
         let isUnmounted = false;
         const pathname = props.location.pathname;
+        console.log(pathname.indexOf(`${config.path}home/learn`) !== -1 , `${config.path}home/page`.indexOf(pathname) !== -1 , pathname)
         if(!isUnmounted){
-            if(`${config.path}home/page`.indexOf(pathname) !== -1){
+            if(pathname.indexOf(`${config.path}home/page`) !== -1){
                 setSelectStyle({page : true , curriculum : false , tool :false , learn : false})
-            }else if(`${config.path}home/learn`.indexOf(pathname) !== -1){
+            }else if(pathname.indexOf(`${config.path}home/learn`) !== -1){
                 setSelectStyle({page : false , curriculum : false , tool :false , learn : true})
-            }else if(`${config.path}home/curriculum`.indexOf(pathname) !== -1){
+            }else if(pathname.indexOf(`${config.path}home/curriculum`) !== -1){
                 setSelectStyle({page : false , curriculum : true , tool :false , learn : false})
             }
-            else if(`${config.path}home/tool`.indexOf(pathname) !== -1){
+            else if(pathname.indexOf(`${config.path}home/tool`) !== -1){
                 setSelectStyle({page : false , curriculum : false , tool :true , learn : false})
             }
         }
@@ -57,6 +61,7 @@ const HomeIndex = (props) => {
     }
     //antd的开关事件
     const onChange = (checked) => {
+        dispatch(ground_color(checked))
         setBackGround(checked)
     }
     return (
@@ -77,13 +82,11 @@ const HomeIndex = (props) => {
                     <Link to={config.path + 'home/learn'}>
                         <li className={selectStyle.learn ? Css['active'] : ''}>
                             <em className={backGround? Css['active'] : ''}>学习</em>
-                            <span className={backGround ? Css['active'] : ''}></span>
                         </li>
                         </Link>
                     <Link to={config.path + 'home/curriculum'}>
                         <li className={selectStyle.curriculum ? Css['active'] : ''}>
-                            <em className={backGround? Css['active'] : ''}>课程</em>
-                            <span className={backGround ? Css['active'] : ''}></span>
+                            <em className={backGround? Css['active'] : ''}>书籍</em>
                         </li>
                     </Link>
                     <Link to={config.path + 'home/tool'}>

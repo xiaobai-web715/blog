@@ -4,8 +4,21 @@
 .page .first-screen .text-content p:nth-child(1){font-size:46px;font-weight:bold;}
 .page .first-screen .text-content p span{color:#338BFF !important;}
 .page .first-screen .text-content .introduce{font-size:18px;color:#637792}
-.page .first-screen .text-content button{width:138px;height:26px;padding:12px 20px;box-sizing:content-box;background:linear-gradient(to right , hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%));border:none;cursor:pointer;}
+.page .first-screen .text-content button{width:138px;height:26px;padding:12px 20px;box-sizing:content-box;background:linear-gradient(to right , hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%));border:none;cursor:pointer;font-size:18px;font-weight:bold;}
 .page .first-screen .image-content{display:flex;align-items:center;justify-content:center;}
-.page .first-screen .image-content .image{width:700px;min-height:400px;
+.page .first-screen .image-content .content{width:auto;height:auto;position:relative;}
+.page .first-screen .image-content .image{width:700px;height:400px;
 background-image:url('../../image/common/19.jpg');background-size:100%;background-repeat:no-repeat;background-position:center;}
-
+/* CSS3动画 */
+@keyframes spin {
+    from{
+        transform:rotateY(0deg);
+    }to{
+        transform:rotateY(360deg);
+    }
+}
+.page .first-screen .image-content .text{width:auto;height:auto;position:absolute;display:block;z-index:2;left:5%;top:20%;font-size:60px;font-weight:bold;color:rgb(211, 216, 222);width:120px;text-align:center;border:2px solid rgb(211, 216, 222);border-radius:5px;animation:spin 3s ease infinite;}
+.page .first-screen .image-content .text span{width:40px;height:40px;border-top:40px solid rgb(211, 216, 222);position:absolute;bottom:-41px;left:50%;border-left:40px solid transparent;}
+.page .content{width:100%;height:auto;padding:0 16px;}
+.page .content .title{width:100%;text-align:center;font-size:28px;font-weight:bold;position:relative;}
+.page .content .title span{font-size:12px;position:absolute;background-color:#338BFF;border-radius:3px;margin-left:10px;}

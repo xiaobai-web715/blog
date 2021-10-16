@@ -11,7 +11,19 @@ const HomePage = () => {
                     <button>去B站关注</button>
                 </div>
                 <div className={Css['image-content']}>
-                    <div className={Css['image']}></div>
+                    <div className={Css['content']}>
+                        <div className={Css['image']}></div>
+                        <span className={Css['text']}>
+                            JS
+                            <span></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div className={Css['content']}>
+                <div className={Css['title']}>
+                    最新博客
+                    <span>NEW</span>
                 </div>
             </div>
         </div>
