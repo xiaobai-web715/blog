@@ -12,6 +12,7 @@ const LearnIndex = (props) => {
         props.history.push(config.path + url)
     }
     const data = [
+        {title : '学习历程' , res : [{title : '简介' , path : 'home/learn/introduction'}]},
         {title : 'HTML与CSS' , res : [{title : '静态页面' , path : 'home/learn/HC/1'}]},
         {title : 'JavaScript' , res : [{title : '轮播图' , path : 'home/learn/JS/1'} , {title : '贪吃蛇' , path : 'home/learn/JS/2'} , {title : '数据可视化' , path : 'home/learn/JS/3'}]},
         {title : 'React' , res : [{title : '京东电商' , path : 'home/learn/React/1'} , {title : '博客' , path : 'home/learn/React/2'}]}

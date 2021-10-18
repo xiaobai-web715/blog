@@ -26,7 +26,6 @@ const HomeIndex = (props) => {
     useEffect(() => {
         let isUnmounted = false;
         const pathname = props.location.pathname;
-        console.log(pathname.indexOf(`${config.path}home/learn`) !== -1 , `${config.path}home/page`.indexOf(pathname) !== -1 , pathname)
         if(!isUnmounted){
             if(pathname.indexOf(`${config.path}home/page`) !== -1){
                 setSelectStyle({page : true , curriculum : false , tool :false , learn : false})

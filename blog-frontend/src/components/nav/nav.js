@@ -27,7 +27,7 @@ const NavIndex = (props) => {
                             </div>
                             <div className={Css['content']}>
                                 {
-                                    item.res.length > 0 ?
+                                    item.res !== undefined ?
                                     item.res.map((item_ , index_) => {
                                         return (
                                             <li className={item.style ? Css['active'] : ''} key={index_} onClick={props.click.bind(null , item_.path)}>{item_.title}</li>

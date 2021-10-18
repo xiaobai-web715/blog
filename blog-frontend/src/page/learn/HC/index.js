@@ -2,7 +2,7 @@ import React from 'react'
 
 const HCIndex = () => {
     return (
-        <div>
+        <div style={{paddingRight : '256px'}}>
             HTML与CSS
         </div>
     )

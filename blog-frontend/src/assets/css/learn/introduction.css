@@ -1,0 +1,8 @@
+.page{min-width:650px;height:418px;}
+.page .title{width:100%;height:auto;font-size:20px;font-weight:bold;margin-bottom:4px;}
+.page .image-wrap{width:1390px;;height:256px;overflow:hidden;position:relative;border-top:10px solid transparent;border-bottom:10px solid transparent;border-right:5px solid transparent;border-left:5px solid transparent;border-image:linear-gradient(to right ,hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%)) 1 10}
+/* 要想轮播图的第一张有效果,必须设置初始的定位值 */
+.page .image-wrap ul{width:1390px;height:256px; ;box-sizing:content-box;display:flex;margin:0;position:absolute;transition:2s;left:0;}
+/* 父元素中要加入一个透视的属性,来呈现出伪3D的效果 perspective*/
+.page .image-wrap ul li{width:450px;height:100%;margin:0 20px 0 0px;}
+.page .image-wrap ul li img{height:100%;}
