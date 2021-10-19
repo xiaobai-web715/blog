@@ -1,8 +1,43 @@
 .page{min-width:650px;height:418px;}
 .page .title{width:100%;height:auto;font-size:20px;font-weight:bold;margin-bottom:4px;}
-.page .image-wrap{width:1390px;;height:256px;overflow:hidden;position:relative;border-top:10px solid transparent;border-bottom:10px solid transparent;border-right:5px solid transparent;border-left:5px solid transparent;border-image:linear-gradient(to right ,hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%)) 1 10}
+.page .image-wrap{width:1390px;height:256px;overflow:hidden;position:relative;border-top:10px solid transparent;border-bottom:10px solid transparent;border-right:5px solid transparent;border-left:5px solid transparent;border-image:linear-gradient(to right ,hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%)) 1 10}
+.page .image-wrap.target{height:400px;display:flex;align-items:center;}
 /* 要想轮播图的第一张有效果,必须设置初始的定位值 */
-.page .image-wrap ul{width:1390px;height:256px; ;box-sizing:content-box;display:flex;margin:0;position:absolute;transition:2s;left:0;}
+.page .image-wrap ul{width:1390px;height:256px;box-sizing:content-box;display:flex;margin:0;position:absolute;transition:2s;left:0;}
+.page .image-wrap ul.target{height:300px;transform-style:preserve-3d;justify-content:center;animation: a 30s infinite cubic-bezier(.7,0,.17,1);}
 /* 父元素中要加入一个透视的属性,来呈现出伪3D的效果 perspective*/
-.page .image-wrap ul li{width:450px;height:100%;margin:0 20px 0 0px;}
-.page .image-wrap ul li img{height:100%;}
+.page .image-wrap ul li{width:450px;height:100%;border-right:20px solid transparent;border-image:linear-gradient(to right ,hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%)) 1 10;box-sizing:content-box;}
+.page .image-wrap ul li img{height:100%;width:450px;}
+/* calc(var(--i)*60deg)这里要根据图片的数量进行均分 , 后面跟的translateZ(650px)好像是设置的水平距离的总长度*/
+.page .image-wrap ul li.target{width:500px;height:300px;transform:rotateY(calc(var(--i)*45deg)) translateZ(650px);border:none;position:absolute;}
+.page .image-wrap ul li img.target{height:100%;width:500px;cursor:pointer;}
+/* 下面也要根据图片的数量进行均分 */
+@keyframes a{
+    0%{
+        transform:translateZ(-200px) rotateY(0)
+    }
+    12.5%{
+        transform:translateZ(-200px) rotateY(-45deg)        
+    }
+    25%{
+        transform:translateZ(-200px) rotateY(-90deg)        
+    }
+    37.5%{
+        transform:translateZ(-200px) rotateY(-135deg)        
+    }
+    50%{
+        transform:translateZ(-200px) rotateY(-180deg)        
+    }
+    62.5%{
+        transform:translateZ(-200px) rotateY(-225deg)        
+    }
+    75%{
+        transform:translateZ(-200px) rotateY(-270deg)
+    }
+    87.5%{
+        transform:translateZ(-200px) rotateY(-315deg)
+    }
+    100%{
+        transform:translateZ(-200px) rotateY(-360deg)
+    }
+}

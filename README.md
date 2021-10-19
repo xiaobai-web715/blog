@@ -43,3 +43,9 @@ yarn安装antd,顶部导航栏（搜索部分除外）,提交到progress02分支
 ```bash
 学习界面轮播图基本构成,提交到progress06分支
 ```
+
+第八次提交：
+
+```bash
+3D轮播图,提交到progress07分支
+```

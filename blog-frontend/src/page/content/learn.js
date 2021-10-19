@@ -6,6 +6,11 @@ import Css from '../../assets/css/home/learn.css'
 import config from '../../assets/js/config/config'
 const Introduction = lazy(() => import('../learn/introduction'))
 const HCIndex = lazy(() => import('../learn/HC/index'))
+const LunBoTu = lazy(() => import('../learn/JS/lunbotu'))
+const TanChiShe = lazy(() => import('../learn/JS/tanchishe'))
+const ShuJuKeShiHua = lazy(() => import('../learn/JS/shujukeshihua'))
+const JDReact = lazy(() => import('../learn/React/jdReact'))
+const Blog = lazy(() => import('../learn/React/blog'))
 
 const LearnIndex = (props) => {
     const handleClick = (url) => {
@@ -26,6 +31,11 @@ const LearnIndex = (props) => {
                         <Switch>
                             <Route path={config.path + 'home/learn/introduction'} component={Introduction}></Route>
                             <Route path={config.path + 'home/learn/HC/1'} component={HCIndex}></Route>
+                            <Route path={config.path + 'home/learn/JS/1'} component={LunBoTu}></Route>
+                            <Route path={config.path + 'home/learn/JS/2'} component={TanChiShe}></Route>
+                            <Route path={config.path + 'home/learn/JS/3'} component={ShuJuKeShiHua}></Route>
+                            <Route path={config.path + 'home/learn/React/1'} component={JDReact}></Route>
+                            <Route path={config.path + 'home/learn/React/2'} component={Blog}></Route>
                             <Redirect to={config.path + 'home/learn/introduction'}></Redirect>
                         </Switch>
                     </Suspense>
