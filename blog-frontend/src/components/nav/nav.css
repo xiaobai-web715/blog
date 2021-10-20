@@ -4,6 +4,6 @@
 .page .page-content.down{transform:rotateZ(-90deg);}
 .page .title-content .title{width:100%;height:auto;display:flex;justify-content:space-between;align-items:center;padding:6px 10px 6px 22px;box-sizing:border-box;font-size:16px;cursor:pointer;font-weight:bold;}
 .page .content{width:100%;height:auto;}
-.page .content li{width:100%;height:36px;display:flex;justify-content:space-between;align-items:center;padding:0 32px 0 40px;box-sizing:border-box;font-size:14px;overflow: hidden;cursor:pointer;}
-.page .content li:hover{color:#00BFFF;}
-.page .content li.active{height:0;}
+.page .content.active{overflow:hidden;height:0;}
+.page .content li{width:216px;height:36px;display:flex;justify-content:space-between;align-items:center;padding-left:10px;margin:0 0 0 30px;box-sizing:border-box;font-size:14px;overflow: hidden;cursor:pointer;border-radius:10px;}
+.page .content li.active{background:linear-gradient(to left ,hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%));}
