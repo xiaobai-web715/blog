@@ -1,8 +1,10 @@
 import React , {useRef , useEffect}  from 'react'
+import {useSelector} from 'react-redux'
 import config from '../../assets/js/config/config'
 import Css from '../../assets/css/learn/introduction.css'
 
 const Introduction = (props) => {
+    const {value} = useSelector(state => state.groundColorReducer)
     const data = [
         {title : '1'},
         {title : '23'},
@@ -55,7 +57,7 @@ const Introduction = (props) => {
         props.history.push(config.path + url)
     }
     return (
-        <div className={Css['page']}>
+        <div className={value === 'dark' ? Css['page'] + ' ' + Css['active'] : Css['page']}>
             <div className={Css['title']}>我的学习历程</div>
             <div className={Css['image-wrap']}>
                 <ul ref={ul}>

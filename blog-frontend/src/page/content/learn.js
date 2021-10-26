@@ -26,20 +26,18 @@ const LearnIndex = (props) => {
         <div className={Css['page']}>
             <NavIndex data={data} click={handleClick}></NavIndex>
             <div className={Css['content-wrap']}>
-                <div className={Css['content']}>
-                    <Suspense fallback={<React.Fragment></React.Fragment>}>
-                        <Switch>
-                            <Route path={config.path + 'home/learn/introduction'} component={Introduction}></Route>
-                            <Route path={config.path + 'home/learn/HC/1'} component={HCIndex}></Route>
-                            <Route path={config.path + 'home/learn/JS/1'} component={LunBoTu}></Route>
-                            <Route path={config.path + 'home/learn/JS/2'} component={TanChiShe}></Route>
-                            <Route path={config.path + 'home/learn/JS/3'} component={ShuJuKeShiHua}></Route>
-                            <Route path={config.path + 'home/learn/React/1'} component={JDReact}></Route>
-                            <Route path={config.path + 'home/learn/React/2'} component={Blog}></Route>
-                            <Redirect to={config.path + 'home/learn/introduction'}></Redirect>
-                        </Switch>
-                    </Suspense>
-                </div>
+                <Suspense fallback={<React.Fragment></React.Fragment>}>
+                    <Switch>
+                        <Route path={config.path + 'home/learn/introduction'} component={Introduction}></Route>
+                        <Route path={config.path + 'home/learn/HC/1'} component={HCIndex}></Route>
+                        <Route path={config.path + 'home/learn/JS/1'} component={LunBoTu}></Route>
+                        <Route path={config.path + 'home/learn/JS/2'} component={TanChiShe}></Route>
+                        <Route path={config.path + 'home/learn/JS/3'} component={ShuJuKeShiHua}></Route>
+                        <Route path={config.path + 'home/learn/React/1'} component={JDReact}></Route>
+                        <Route path={config.path + 'home/learn/React/2'} component={Blog}></Route>
+                        <Redirect to={config.path + 'home/learn/introduction'}></Redirect>
+                    </Switch>
+                </Suspense>
             </div>
         </div>
     )

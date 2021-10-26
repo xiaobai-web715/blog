@@ -1,10 +1,12 @@
 import React , {useState , useEffect} from 'react'
+import {useSelector} from 'react-redux'
 import config from '../../assets/js/config/config'
 //可以给非src下面的文件添加props的属性
 import { withRouter } from 'react-router'
 import Css from '../nav/nav.css'
 
 const NavIndex = (props) => {
+    const {value} = useSelector(state => state.groundColorReducer)
     const [data , setData] = useState([])
     const styleChange = (index) => {
         let copyData = [...data];
@@ -52,7 +54,7 @@ const NavIndex = (props) => {
         }
     } , [props])// eslint-disable-line react-hooks/exhaustive-deps
     return (
-        <div className={Css['page']}>
+        <div className={value === 'dark' ? Css['page'] + ' ' + Css['active'] : Css['page']}>
             {
                 data.length > 0 ?
                 data.map((item , index) => {
