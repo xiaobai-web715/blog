@@ -2,6 +2,7 @@ import React , {Suspense , lazy} from 'react'
 import {HashRouter as Router , Route , Switch , Redirect} from 'react-router-dom'
 import config from './assets/js/config/config'
 const HomeIndex = lazy(() => import('./page/home/index'))
+const MoreLearn = lazy(() => import('./page/learn-more/index'))
 
 const RouterFn = () => {
     return (
@@ -15,6 +16,7 @@ const RouterFn = () => {
                     <Switch>
                         {/* 第五层是Route */}
                         <Route path={config.path + 'home'} component={HomeIndex}></Route>
+                        <Route path={config.path+'api/learn/more'} component={MoreLearn}></Route>
                         <Redirect to={config.path+'home/page'}></Redirect>
                     </Switch>
                 </Suspense>
