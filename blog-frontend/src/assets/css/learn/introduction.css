@@ -1,5 +1,5 @@
-.page{min-width:1390px;height:725px;}
-.page.active{background-color:#15172a;}
+/* min-width:min-content;这个DOM元素的最小宽度就是内部元素的最宽的不能折行的元素 */
+.page{min-width:min-content;height:725px;padding-left:300px;}
 .page .title{width:100%;height:auto;font-size:20px;font-weight:bold;margin-bottom:4px;}
 .page .image-wrap{width:1390px;height:256px;overflow:hidden;position:relative;border-top:10px solid transparent;border-bottom:10px solid transparent;border-right:5px solid transparent;border-left:5px solid transparent;border-image:linear-gradient(to right ,hsl(214deg, 100%, 60%) , hsl(214deg, 100%, 75%)) 1 10}
 .page .image-wrap.target{height:400px;display:flex;align-items:center;}

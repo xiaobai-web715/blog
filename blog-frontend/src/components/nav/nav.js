@@ -54,7 +54,7 @@ const NavIndex = (props) => {
         }
     } , [props])// eslint-disable-line react-hooks/exhaustive-deps
     return (
-        <div className={value === 'dark' ? Css['page'] + ' ' + Css['active'] : Css['page']}>
+        <div className={(value  || sessionStorage.getItem('backgroundColor'))  === 'dark' ? Css['page'] + ' ' + Css['active'] : Css['page']}>
             {
                 data.length > 0 ?
                 data.map((item , index) => {

@@ -1,10 +1,8 @@
 import React , {useRef , useEffect}  from 'react'
-import {useSelector} from 'react-redux'
 import config from '../../assets/js/config/config'
 import Css from '../../assets/css/learn/introduction.css'
 
 const Introduction = (props) => {
-    const {value} = useSelector(state => state.groundColorReducer)
     const data = [
         {title : '1'},
         {title : '23'},
@@ -53,11 +51,12 @@ const Introduction = (props) => {
         }
     } , [])
     //点击图片跳转页面
-    const pushPage = (url) => {
-        props.history.push(config.path + url)
+    const pushPage = (url , title) => {
+        //拼接一个图片名字,好在页面动态替换图片
+        props.history.push(config.path + url + `?title=${title}`)
     }
     return (
-        <div className={value === 'dark' ? Css['page'] + ' ' + Css['active'] : Css['page']}>
+        <div className={Css['page']}>
             <div className={Css['title']}>我的学习历程</div>
             <div className={Css['image-wrap']}>
                 <ul ref={ul}>
@@ -78,7 +77,7 @@ const Introduction = (props) => {
                         dataTarget.length > 0 ?
                         dataTarget.map((item , index) => {
                             return (
-                                <li key={index} className={Css['target']} style={{'--i' : index}} onClick={pushPage.bind(null , item.url)}><img className={Css['target']} src={require(`../../assets/image/introduction/learn/${item.title}.jpg`).default} alt={item.title}></img></li>
+                                <li key={index} className={Css['target']} style={{'--i' : index}} onClick={pushPage.bind(null , item.url , item.title)}><img className={Css['target']} src={require(`../../assets/image/introduction/learn/${item.title}.jpg`).default} alt={item.title}></img></li>
                             )
                         }):''
                     }

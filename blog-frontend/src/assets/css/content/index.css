@@ -1,4 +1,5 @@
-.page{width:100%;min-height:100vh;padding-top:67px;}
+/* 这里使用min-width:min-content;不能解决最外面的页面自适应这个页面的问题,也就是这里的min-width:min-content;还不够宽,当然父级也有min-width:min-content */
+.page{min-width:752px;min-height:100vh;padding-top:67px;}
 .page .first-screen{width:100%;height:100vh;box-sizing:border-box;padding-top:67px;margin-top:-67px;/* 栅格化布局 */display:grid;/* 当栅格元素的区域到达临界700px的时候，这里就会自动实现栅格列转成栅格行 */grid-template-columns:repeat(auto-fit , minmax(720px , 1fr));}
 .page .first-screen .text-content{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 64px 0 64px;}
 .page .first-screen .text-content p:nth-child(1){font-size:46px;font-weight:bold;}

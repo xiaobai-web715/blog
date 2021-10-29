@@ -68,3 +68,9 @@ learn二级导航页面布局,以及视图上的一些边界问题,提交到prog
 ```bash
 mock.js模拟数据回显,使用的axios请求,创建阅览更多页面（并根据props.location.search来请求数据）,提交到progress10分支
 ```
+
+第十二次提交：
+
+```bash
+使用min-width:min-content来自适应内部元素的宽度,结合sessionStorage存储值决定背景,提交到progress11分支
+```

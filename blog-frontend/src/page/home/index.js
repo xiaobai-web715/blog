@@ -16,7 +16,7 @@ const HomeTool = lazy(() => import('../content/tool'))
 const HomeIndex = (props) => {
     const dispatch = useDispatch(null);
     const [selectStyle , setSelectStyle] = useState({page : true , curriculum : false , tool :false , learn : false})
-    const [backGround , setBackGround] = useState(false)
+    const [backGround , setBackGround] = useState(sessionStorage.getItem('backgroundColor') === 'dark'? true : false)
     //添加一个状态来修改搜索组件的属性
     const [bMask , setBMask] = useState(false)
     const [bSearch , setBSearch] = useState(Css["up"])
@@ -61,6 +61,8 @@ const HomeIndex = (props) => {
     //antd的开关事件
     const onChange = (checked) => {
         dispatch(ground_color(checked))
+        //这里还需要再写入sessionStorage做存储,防止刷新时值丢失
+        sessionStorage.setItem('backgroundColor' , checked ? 'dark' : 'light')
         setBackGround(checked)
     }
     return (
@@ -94,7 +96,7 @@ const HomeIndex = (props) => {
                         </li>
                     </Link>
                     <li><a href='https://github.com/xiaobai-web715/blog/tree/master' ><em className={backGround? Css['active'] : ''}>本站源码</em></a></li>
-                    <li><Switch size='default' onChange={onChange}/></li>
+                    <li><Switch size='default' onChange={onChange} checked={backGround}/></li>
                     <li onClick={search}>
                         <div className={Css['image']}><div></div></div>
                         搜索
