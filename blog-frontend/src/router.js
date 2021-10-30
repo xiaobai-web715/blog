@@ -3,6 +3,7 @@ import {HashRouter as Router , Route , Switch , Redirect} from 'react-router-dom
 import config from './assets/js/config/config'
 const HomeIndex = lazy(() => import('./page/home/index'))
 const MoreLearn = lazy(() => import('./page/learn-more/index'))
+const MoreCurriculum = lazy(() => import('./page/curriculum-more/index'))
 
 const RouterFn = () => {
     return (
@@ -17,6 +18,7 @@ const RouterFn = () => {
                         {/* 第五层是Route */}
                         <Route path={config.path + 'home'} component={HomeIndex}></Route>
                         <Route path={config.path+'api/learn/more'} component={MoreLearn}></Route>
+                        <Route path={config.path+'api/curriculum/more'} component={MoreCurriculum}></Route>
                         <Redirect to={config.path+'home/page'}></Redirect>
                     </Switch>
                 </Suspense>

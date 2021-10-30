@@ -74,3 +74,9 @@ mock.js模拟数据回显,使用的axios请求,创建阅览更多页面（并根
 ```bash
 使用min-width:min-content来自适应内部元素的宽度,结合sessionStorage存储值决定背景,提交到progress11分支
 ```
+
+第十三次提交：
+
+```bash
+学习和书籍及跳转页面的基本构建,提交到progress12分支
+```
