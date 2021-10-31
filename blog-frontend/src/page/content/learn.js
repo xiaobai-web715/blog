@@ -1,4 +1,5 @@
 import React , {lazy , Suspense} from 'react'
+import { useSelector } from 'react-redux'
 import {Route , Switch , Redirect} from 'react-router-dom'
 import NavIndex from '../../components/nav/nav'
 // import {Menu} from 'antd' => antd的这个导航组件会有一个颜色变化的延迟
@@ -13,6 +14,7 @@ const JDReact = lazy(() => import('../learn/React/jdReact'))
 const Blog = lazy(() => import('../learn/React/blog'))
 
 const LearnIndex = (props) => {
+    const {value} = useSelector(state => state.groundColorReducer)
     const handleClick = (url) => {
         props.history.push(config.path + url)
     }
@@ -23,7 +25,7 @@ const LearnIndex = (props) => {
         {title : 'React' ,  catalogue : 'React' , res : [{title : '京东电商' , path : 'home/learn/React/1'} , {title : '博客' , path : 'home/learn/React/2'}]}
     ]
     return (
-        <div className={Css['page']}>
+        <div className={(value || sessionStorage.getItem('backgroundColor')) === 'dark' ? Css['page'] + ' ' + Css['active'] : Css['page']}>
             <NavIndex data={data} click={handleClick}></NavIndex>
             <Suspense fallback={<React.Fragment></React.Fragment>}>
                 <Switch>
